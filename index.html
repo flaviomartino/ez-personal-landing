@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EZ Personal - Seja um dos primeiros 50 personal trainers">
+    <meta name="description" content="EZ Personal - Seja um dos primeiros 50 personal trainers. Gratuito até 30 de novembro de 2026!">
     <meta name="theme-color" content="#10B981">
     <title>EZ Personal - Turma Zero</title>
     <link rel="stylesheet" href="style.css">
@@ -13,34 +13,52 @@
 </head>
 <body>
     <!-- Contact Form Section -->
-    <section class="contact-section">
+    <section id="mainSection" class="contact-section">
         <div class="container">
             <div class="contact-wrapper">
                 <div class="contact-content">
-                    <h1 class="contact-title">Fale Conosco</h1>
+                    <h1 class="contact-title">EZ Personal</h1>
                     <div class="turma-zero-badge">🎯 Turma Zero · pré-lançamento</div>
                     <h2 class="turma-zero-title">Seja um dos primeiros 50 personal trainers a usar o EZ Personal</h2>
                     <p class="turma-zero-description">
-                        Estamos abrindo um grupo fechado de fundadores antes do lançamento oficial em <strong>1º de setembro</strong> — o Dia do Educador Físico. Quem entra agora ajuda a moldar a ferramenta e garante condições de fundador.
+                        Estamos abrindo um grupo fechado de fundadores antes do lançamento oficial em <strong>1º de setembro de 2026</strong> — o Dia do Educador Físico.
+                        <br><br>
+                        <strong>📆 Gratuito até 30 de novembro de 2026!</strong> Quanto antes você se inscrever, mais tempo grátis você terá para usar a plataforma.
                     </p>
                     <div class="turma-zero-benefits">
                         <div class="turma-zero-benefit">
                             <span class="turma-zero-benefit-icon">💸</span>
-                            <span>Gratuito durante todo o pré-lançamento</span>
+                            <div class="turma-zero-benefit-text">
+                                <strong>Gratuito por 3 meses</strong>
+                                <span>Use sem custo até 30/11/2026</span>
+                            </div>
                         </div>
                         <div class="turma-zero-benefit">
                             <span class="turma-zero-benefit-icon">🛠️</span>
-                            <span>Suporte direto de quem está construindo</span>
+                            <div class="turma-zero-benefit-text">
+                                <strong>Suporte direto</strong>
+                                <span>Fale com quem está construindo a ferramenta</span>
+                            </div>
                         </div>
                         <div class="turma-zero-benefit">
                             <span class="turma-zero-benefit-icon">⭐</span>
-                            <span>Preço de fundador ao lançar</span>
+                            <div class="turma-zero-benefit-text">
+                                <strong>Preço de fundador</strong>
+                                <span>Condições especiais após o período gratuito</span>
+                            </div>
+                        </div>
+                        <div class="turma-zero-benefit">
+                            <span class="turma-zero-benefit-icon">🚀</span>
+                            <div class="turma-zero-benefit-text">
+                                <strong>Influencie o produto</strong>
+                                <span>Ajude a moldar as funcionalidades</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="turma-zero-form-wrapper">
                     <h3 class="turma-zero-form-title">Garanta sua vaga na Turma Zero</h3>
-                    <p class="turma-zero-form-description">Deixe seus dados e entraremos em contato para ativar seu acesso de pré-lançamento. Vagas limitadas a 50 personal trainers.</p>
+                    <p class="turma-zero-form-description">Deixe seus dados e entraremos em contato pelo WhatsApp para ativar seu acesso. Vagas limitadas a 50 personal trainers.</p>
                     <form id="turmaZeroForm" class="turma-zero-form">
                         <div class="form-group">
                             <input type="text" id="name" name="name" class="form-input" placeholder="Seu nome completo" required>
@@ -52,17 +70,43 @@
                             <input type="tel" id="phone" name="phone" class="form-input" placeholder="WhatsApp (com DDD)" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="city" name="city" class="form-input" placeholder="Cidade e estado">
+                            <input type="text" id="city" name="city" class="form-input" placeholder="Cidade e estado (opcional)">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">
                             <span>Quero participar da Turma Zero</span>
                         </button>
                         <p class="form-notice">🔒 Seus dados estão seguros. Sem spam, sem compromisso.</p>
                     </form>
-                    <div id="formSuccess" class="form-message form-message-success" style="display: none;">
-                        ✓ Inscrição recebida! Entraremos em contato em breve.
-                    </div>
+                    <div id="formError" class="form-message form-message-error" style="display: none;"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thank You Section (hidden by default) -->
+    <section id="thankYouSection" class="contact-section" style="display: none;">
+        <div class="container">
+            <div class="thankyou-wrapper">
+                <div class="thankyou-icon">✅</div>
+                <h1 class="thankyou-title">Inscrição recebida com sucesso!</h1>
+                <p class="thankyou-description">
+                    Obrigado por se inscrever na Turma Zero do EZ Personal!
+                    <br><br>
+                    Em breve você receberá uma mensagem no WhatsApp com as instruções de acesso à plataforma.
+                    <br><br>
+                    <strong>Fique de olho no seu WhatsApp!</strong> 📱
+                </p>
+                <div class="thankyou-next-steps">
+                    <h3>Próximos passos:</h3>
+                    <ol>
+                        <li>Aguarde nossa mensagem no WhatsApp</li>
+                        <li>Siga as instruções para criar sua conta</li>
+                        <li>Comece a usar gratuitamente até 30/11/2026</li>
+                    </ol>
+                </div>
+                <button class="btn btn-secondary" onclick="location.reload()">
+                    Fazer nova inscrição
+                </button>
             </div>
         </div>
     </section>

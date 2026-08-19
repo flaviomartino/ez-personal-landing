@@ -1,64 +1,99 @@
+// Configuration
+const API_URL = 'https://app.ezpersonal.com.br/api/turma-zero/signup';
+
 // Form handling - Turma Zero
 const turmaZeroForm = document.getElementById('turmaZeroForm');
-const formSuccess = document.getElementById('formSuccess');
+const formError = document.getElementById('formError');
+const mainSection = document.getElementById('mainSection');
+const thankYouSection = document.getElementById('thankYouSection');
+const submitBtn = turmaZeroForm?.querySelector('button[type="submit"]');
 
-if (turmaZeroForm) {
+if (turmaZeroForm && submitBtn) {
     turmaZeroForm.addEventListener('submit', async function(e) {
         e.preventDefault();
 
+        // Hide any previous errors
+        if (formError) {
+            formError.style.display = 'none';
+        }
+
         // Get form data
         const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            city: document.getElementById('city').value || 'Não informado',
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            city: document.getElementById('city').value.trim() || undefined,
             source: 'Turma Zero Landing Page'
         };
 
-        // Create mailto link
-        const subject = encodeURIComponent('Inscrição Turma Zero - ' + formData.name);
-        const body = encodeURIComponent(
-            `NOVA INSCRIÇÃO - TURMA ZERO\n\n` +
-            `Nome: ${formData.name}\n` +
-            `Email: ${formData.email}\n` +
-            `WhatsApp: ${formData.phone}\n` +
-            `Cidade: ${formData.city}\n\n` +
-            `---\n` +
-            `Inscrito via: ${formData.source}\n` +
-            `Data: ${new Date().toLocaleString('pt-BR')}`
-        );
-
-        const mailtoLink = `mailto:oipandaapp@gmail.com?subject=${subject}&body=${body}`;
-
-        // Open mailto link
-        window.location.href = mailtoLink;
-
-        // Show success message
-        formSuccess.style.display = 'block';
-        turmaZeroForm.style.display = 'none';
-
-        // Optional: Send to analytics or tracking
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'turma_zero_signup', {
-                'event_category': 'engagement',
-                'event_label': formData.city
-            });
+        // Basic validation
+        if (!formData.name || !formData.email || !formData.phone) {
+            showError('Por favor, preencha todos os campos obrigatórios.');
+            return;
         }
-    });
-}
 
-// Add loading state to submit button
-const submitBtn = turmaZeroForm?.querySelector('button[type="submit"]');
-if (submitBtn) {
-    turmaZeroForm.addEventListener('submit', function() {
+        // Show loading state
         const originalHTML = submitBtn.innerHTML;
         submitBtn.innerHTML = '<span>Enviando...</span>';
         submitBtn.disabled = true;
 
-        // Re-enable after 3 seconds
-        setTimeout(() => {
+        try {
+            // Send to API
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.message || `Erro ao enviar: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            // Track event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'turma_zero_signup', {
+                    'event_category': 'engagement',
+                    'event_label': formData.city || 'não informado'
+                });
+            }
+
+            // Show thank you page
+            showThankYouPage();
+
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            showError(
+                'Ops! Algo deu errado. Por favor, tente novamente ou entre em contato pelo WhatsApp.'
+            );
+
+            // Re-enable button
             submitBtn.innerHTML = originalHTML;
             submitBtn.disabled = false;
-        }, 3000);
+        }
     });
+}
+
+function showError(message) {
+    if (formError) {
+        formError.textContent = message;
+        formError.style.display = 'block';
+
+        // Scroll to error
+        formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+function showThankYouPage() {
+    if (mainSection && thankYouSection) {
+        mainSection.style.display = 'none';
+        thankYouSection.style.display = 'block';
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 }

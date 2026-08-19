@@ -103,7 +103,7 @@ body {
 
 .turma-zero-benefit {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.75rem;
     font-weight: 600;
     color: var(--text-primary);
@@ -111,6 +111,19 @@ body {
 
 .turma-zero-benefit-icon {
     font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.turma-zero-benefit-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.turma-zero-benefit-text span {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-secondary);
 }
 
 .turma-zero-form-wrapper {
@@ -213,6 +226,77 @@ body {
     border: 1px solid #6EE7B7;
 }
 
+.form-message-error {
+    background: #FEE2E2;
+    color: #991B1B;
+    border: 1px solid #FCA5A5;
+}
+
+/* Thank You Page */
+.thankyou-wrapper {
+    text-align: center;
+    background: white;
+    border-radius: 1.5rem;
+    padding: 4rem 3rem;
+    box-shadow: var(--shadow-xl);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.thankyou-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.thankyou-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.thankyou-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.thankyou-next-steps {
+    background: var(--background-alt);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.thankyou-next-steps h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.thankyou-next-steps ol {
+    margin-left: 1.25rem;
+    line-height: 2;
+    color: var(--text-secondary);
+}
+
+.thankyou-next-steps li {
+    margin-bottom: 0.5rem;
+}
+
+.btn-secondary {
+    background: var(--background-alt);
+    color: var(--text-primary);
+    border: 2px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background: var(--border);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     body {
@@ -239,6 +323,22 @@ body {
 
     .turma-zero-form-wrapper {
         padding: 2rem 1.5rem;
+    }
+
+    .thankyou-wrapper {
+        padding: 3rem 2rem;
+    }
+
+    .thankyou-icon {
+        font-size: 3rem;
+    }
+
+    .thankyou-title {
+        font-size: 1.75rem;
+    }
+
+    .thankyou-description {
+        font-size: 1rem;
     }
 }
 
