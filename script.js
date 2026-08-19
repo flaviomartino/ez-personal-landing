@@ -12,51 +12,59 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form handling
-const contactForm = document.getElementById('contactForm');
+// Form handling - Turma Zero
+const turmaZeroForm = document.getElementById('turmaZeroForm');
 const formSuccess = document.getElementById('formSuccess');
-const formError = document.getElementById('formError');
 
-contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
+if (turmaZeroForm) {
+    turmaZeroForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-    // Hide previous messages
-    formSuccess.style.display = 'none';
-    formError.style.display = 'none';
+        // Get form data
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            city: document.getElementById('city').value || 'Não informado',
+            source: 'Turma Zero Landing Page'
+        };
 
-    // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        message: document.getElementById('message').value
-    };
+        // Create mailto link
+        const subject = encodeURIComponent('Inscrição Turma Zero - ' + formData.name);
+        const body = encodeURIComponent(
+            `NOVA INSCRIÇÃO - TURMA ZERO\n\n` +
+            `Nome: ${formData.name}\n` +
+            `Email: ${formData.email}\n` +
+            `WhatsApp: ${formData.phone}\n` +
+            `Cidade: ${formData.city}\n\n` +
+            `---\n` +
+            `Inscrito via: ${formData.source}\n` +
+            `Data: ${new Date().toLocaleString('pt-BR')}`
+        );
 
-    // Create mailto link
-    const subject = encodeURIComponent('Contato via Site - ' + formData.name);
-    const body = encodeURIComponent(
-        `Nome: ${formData.name}\n` +
-        `Email: ${formData.email}\n` +
-        `Telefone: ${formData.phone}\n\n` +
-        `Mensagem:\n${formData.message}`
-    );
+        const mailtoLink = `mailto:oipandaapp@gmail.com?subject=${subject}&body=${body}`;
 
-    const mailtoLink = `mailto:oipandaapp@gmail.com?subject=${subject}&body=${body}`;
+        // Open mailto link
+        window.location.href = mailtoLink;
 
-    // Open mailto link
-    window.location.href = mailtoLink;
+        // Show success message
+        formSuccess.style.display = 'block';
+        turmaZeroForm.style.display = 'none';
 
-    // Show success message
-    formSuccess.style.display = 'block';
+        // Scroll to success message
+        setTimeout(() => {
+            formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
 
-    // Reset form
-    contactForm.reset();
-
-    // Scroll to success message
-    setTimeout(() => {
-        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 100);
-});
+        // Optional: Send to analytics or tracking
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'turma_zero_signup', {
+                'event_category': 'engagement',
+                'event_label': formData.city
+            });
+        }
+    });
+}
 
 // Header scroll effect
 let lastScroll = 0;
@@ -76,16 +84,41 @@ window.addEventListener('scroll', () => {
 
 // Add loading state to buttons
 document.querySelectorAll('.btn').forEach(button => {
-    button.addEventListener('click', function() {
-        if (this.tagName === 'BUTTON' && this.type === 'submit') {
-            const originalText = this.innerHTML;
+    if (button.tagName === 'BUTTON' && button.type === 'submit') {
+        button.addEventListener('click', function() {
+            const originalHTML = this.innerHTML;
             this.innerHTML = '<span>Enviando...</span>';
             this.disabled = true;
 
+            // Re-enable after form submission
             setTimeout(() => {
-                this.innerHTML = originalText;
+                this.innerHTML = originalHTML;
                 this.disabled = false;
-            }, 2000);
+            }, 3000);
+        });
+    }
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
         }
     });
+}, observerOptions);
+
+// Observe elements for animation
+document.querySelectorAll('.step, .problem-card, .benefit-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    observer.observe(el);
 });
