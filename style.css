@@ -35,6 +35,35 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     background: var(--background);
+    padding-top: 70px;
+}
+
+/* Header */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.btn-header {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9375rem;
 }
 
 .container {
