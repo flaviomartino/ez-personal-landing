@@ -1,0 +1,10 @@
+{
+  "name": "ez-personal-landing",
+  "version": "1.0.0",
+  "description": "EZ Personal Landing Page",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "build": "echo 'No build needed'"
+  }
+}
