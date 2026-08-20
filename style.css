@@ -127,17 +127,11 @@ body {
     color: var(--text-secondary);
 }
 
-.hero-image-placeholder {
-    background: var(--background-alt);
-    border: 2px dashed var(--border);
+.hero-mockup {
+    width: 100%;
+    height: auto;
     border-radius: 16px;
-    padding: 4rem 2rem;
-    text-align: center;
-    color: var(--text-secondary);
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: var(--shadow-xl);
 }
 
 /* Section Styling */
@@ -270,15 +264,11 @@ section {
     line-height: 1.7;
 }
 
-.step-image-placeholder {
-    background: var(--background-alt);
-    border: 2px dashed var(--border);
+.step-mockup {
+    width: 280px;
+    height: auto;
     border-radius: 12px;
-    padding: 3rem 2rem;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    min-width: 200px;
+    box-shadow: var(--shadow-md);
 }
 
 /* Benefits Section */
@@ -591,8 +581,8 @@ footer p {
         flex-direction: column;
     }
 
-    .hero-image-placeholder {
-        min-height: 250px;
+    .hero-mockup {
+        max-width: 100%;
     }
 
     .section-title {
@@ -613,9 +603,9 @@ footer p {
         gap: 1.5rem;
     }
 
-    .step-image-placeholder {
-        min-width: auto;
-        min-height: 150px;
+    .step-mockup {
+        width: 100%;
+        max-width: 280px;
     }
 
     .benefits-grid {
