@@ -289,28 +289,33 @@ section {
     padding: 2rem;
     border-radius: 16px;
     border: 1px solid var(--border-hairline);
-    display: flex;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0.25rem 1rem;
+    align-items: start;
 }
 
 .benefit-check {
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: var(--primary);
     font-weight: 800;
-    flex-shrink: 0;
+    grid-row: 1 / -1;
+    align-self: center;
 }
 
 .benefit-card h3 {
     font-size: 1.125rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
     color: var(--text-primary);
+    margin: 0;
 }
 
 .benefit-card p {
     color: var(--text-secondary);
     line-height: 1.7;
     font-size: 0.9375rem;
+    margin: 0;
 }
 
 /* Signup Section */
