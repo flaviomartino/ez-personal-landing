@@ -62,8 +62,8 @@ if (turmaZeroForm && submitBtn) {
                 });
             }
 
-            // Show thank you page
-            showThankYouPage();
+            // Show success state
+            showSuccess();
 
         } catch (error) {
             console.error('Error submitting form:', error);
@@ -88,12 +88,15 @@ function showError(message) {
     }
 }
 
-function showThankYouPage() {
-    if (mainSection && thankYouSection) {
-        mainSection.style.display = 'none';
-        thankYouSection.style.display = 'block';
-
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+function showSuccess() {
+    const formWrapper = document.querySelector('.signup-form-wrapper');
+    if (formWrapper) {
+        formWrapper.innerHTML = `
+            <div style="text-align:center; padding: 2rem 1rem;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #065F46; margin-bottom: 0.75rem;">Solicitação Enviada</h3>
+                <p style="color: #6B7280; line-height: 1.7;">Em breve você receberá uma mensagem no WhatsApp com as instruções de acesso à plataforma.</p>
+            </div>
+        `;
     }
 }
