@@ -265,10 +265,10 @@ section {
 }
 
 .step-mockup {
-    width: 280px;
+    width: 340px;
     height: auto;
     border-radius: 12px;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
 }
 
 /* Benefits Section */
@@ -605,7 +605,7 @@ footer p {
 
     .step-mockup {
         width: 100%;
-        max-width: 280px;
+        max-width: 340px;
     }
 
     .benefits-grid {
