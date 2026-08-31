@@ -61,6 +61,12 @@ body {
     align-items: center;
 }
 
+.header-logo-img {
+    height: 34px;
+    width: auto;
+    display: block;
+}
+
 .btn-header {
     padding: 0.625rem 1.25rem;
     font-size: 0.9375rem;
