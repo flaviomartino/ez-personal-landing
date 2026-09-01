@@ -402,6 +402,21 @@ section {
     gap: 1rem;
 }
 
+/* B2B Section (academias / White Label) — mesma estrutura do signup, com tom azul pra
+   diferenciar do público de personal trainers (verde). */
+.b2b-section {
+    background: linear-gradient(135deg, #EFF6FF 0%, #EEF2FF 100%);
+}
+
+.b2b-badge {
+    background: linear-gradient(135deg, var(--secondary) 0%, #2563EB 100%);
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 4.5rem;
+}
+
 .form-group {
     margin-bottom: 0;
 }

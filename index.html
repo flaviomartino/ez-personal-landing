@@ -325,8 +325,58 @@
                         <span><strong>Preço Especial de Fundador</strong> até o final de 2026</span>
                     </div>
                 </div>
-                <a href="https://painel.ezpersonal.com.br/login?mode=signup" class="btn btn-primary btn-large">Criar minha conta grátis</a>
+                <a href="https://painel.ezpersonal.com.br/login?mode=signup" id="mainSignupCta" class="btn btn-primary btn-large">Criar minha conta grátis</a>
                 <p class="form-notice">🔒 Leva menos de 1 minuto. Sem cartão de crédito.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- B2B Section — academias / White Label -->
+    <section id="b2b" class="signup-section b2b-section">
+        <div class="container">
+            <div class="signup-wrapper">
+                <div>
+                    <div class="turma-zero-badge b2b-badge">Em construção</div>
+                    <h2 class="signup-title">É dono ou gestor de academia?</h2>
+                    <p class="signup-description">
+                        Estamos construindo uma versão <strong>White Label</strong> do EZ Personal pra academias — sua marca, nossa tecnologia de gestão de alunos, treinos e cobrança pros personal trainers da sua equipe.
+                    </p>
+                    <div class="signup-benefits">
+                        <div class="signup-benefit">
+                            <span class="signup-benefit-icon">🏷️</span>
+                            <span><strong>Sua marca</strong>, nossa tecnologia</span>
+                        </div>
+                        <div class="signup-benefit">
+                            <span class="signup-benefit-icon">📊</span>
+                            <span><strong>Gestão centralizada</strong> de todos os personal trainers da academia</span>
+                        </div>
+                        <div class="signup-benefit">
+                            <span class="signup-benefit-icon">🚀</span>
+                            <span><strong>Prioridade de acesso</strong> quando lançarmos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="signup-form-wrapper">
+                    <h3 class="signup-form-title">Quero conhecer o produto</h3>
+                    <p class="signup-form-description">Deixe seus dados e a gente entra em contato pra te apresentar o EZ Personal White Label.</p>
+                    <form id="b2bForm" class="signup-form">
+                        <div class="form-group">
+                            <input type="text" id="b2bName" class="form-input" placeholder="Seu nome" required maxlength="120">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="b2bGymName" class="form-input" placeholder="Nome da academia" required maxlength="160">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="b2bContact" class="form-input" placeholder="E-mail ou WhatsApp" required maxlength="160">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="b2bMessage" class="form-input" rows="3" placeholder="Mensagem (opcional)" maxlength="1000"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Quero conhecer o produto</button>
+                        <p class="form-notice">🔒 Seus dados só são usados pra entrarmos em contato.</p>
+                        <div id="b2bFormMessage"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -343,5 +393,64 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            // Link de indicação (?ref=<id do personal>) — carrega o ref pro cadastro, quando presente.
+            var ref = new URLSearchParams(window.location.search).get('ref');
+            if (ref) {
+                var cta = document.getElementById('mainSignupCta');
+                if (cta) {
+                    var url = new URL(cta.href);
+                    url.searchParams.set('ref', ref);
+                    cta.href = url.toString();
+                }
+            }
+
+            var API_BASE = 'https://app.ezpersonal.com.br/api';
+
+            var form = document.getElementById('b2bForm');
+            if (!form) return;
+            var messageBox = document.getElementById('b2bFormMessage');
+            var submitBtn = form.querySelector('button[type="submit"]');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                messageBox.innerHTML = '';
+                submitBtn.disabled = true;
+                var originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Enviando…';
+
+                var payload = {
+                    name: document.getElementById('b2bName').value.trim(),
+                    gym_name: document.getElementById('b2bGymName').value.trim(),
+                    contact: document.getElementById('b2bContact').value.trim(),
+                    message: document.getElementById('b2bMessage').value.trim() || undefined,
+                };
+                if (ref) payload.ref = ref;
+
+                fetch(API_BASE + '/b2b-leads', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                })
+                    .then(function (res) {
+                        if (!res.ok) return res.json().then(function (body) { throw new Error(body.message || 'Erro ao enviar.'); });
+                        return res.json();
+                    })
+                    .then(function () {
+                        form.reset();
+                        messageBox.innerHTML = '<p class="form-message form-message-success">✅ Recebemos seus dados! Em breve entramos em contato.</p>';
+                    })
+                    .catch(function (err) {
+                        messageBox.innerHTML = '<p class="form-message form-message-error">' + (err.message || 'Não deu pra enviar agora. Tente de novo em instantes.') + '</p>';
+                    })
+                    .finally(function () {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    });
+            });
+        })();
+    </script>
 </body>
 </html>
