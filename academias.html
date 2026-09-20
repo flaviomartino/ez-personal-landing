@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EZ Academia — o EZ Personal para academias. Treino pelo WhatsApp, confirmação de cada sessão e o painel que mostra quem está sumindo antes de virar cancelamento. Piloto sem custo.">
+    <meta name="theme-color" content="#024d3a">
+    <title>EZ Academia — Quem sumiu da sua academia este mês?</title>
+    <link rel="canonical" href="https://ezacademia.com.br/">
+    <meta property="og:title" content="EZ Academia — retenção de alunos pelo WhatsApp">
+    <meta property="og:description" content="O treino vai ao aluno pelo WhatsApp; cada treino feito vira um sinal; o gestor vê quem está parando de aparecer. Piloto sem custo para academias de SP.">
+    <meta property="og:image" content="https://ezpersonal.com.br/images/05-acompanhamento.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Só o que a página de academias tem e a de personal não tem. O resto vem do style.css. */
+        .acad-kicker{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary-dark);background:rgba(115,213,55,.16);padding:.35rem .8rem;border-radius:999px;margin-bottom:1rem}
+        .acad-quote{border-left:4px solid var(--primary);background:var(--background-page);padding:1rem 1.25rem;border-radius:0 12px 12px 0;font-size:1.15rem;color:var(--text-primary);max-width:820px;margin:1.5rem auto 0}
+        .acad-table{width:100%;border-collapse:collapse;margin-top:1.5rem;background:var(--background);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+        .acad-table th{text-align:left;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);padding:.85rem 1rem;background:var(--background-alt);border-bottom:1px solid var(--border)}
+        .acad-table td{padding:.9rem 1rem;border-bottom:1px solid var(--border-hairline);vertical-align:top;font-size:.97rem}
+        .acad-table tr:last-child td{border-bottom:0}
+        .acad-table td:first-child{font-weight:700;color:var(--text-primary);width:30%}
+        .acad-tag{display:inline-block;white-space:nowrap;font-size:.7rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:.2rem .6rem;border-radius:999px;background:rgba(115,213,55,.18);color:var(--primary-dark)}
+        .acad-tag.piloto{background:#fdf3e3;color:#b45309}
+        .acad-pricing{display:grid;grid-template-columns:1.1fr 1fr;gap:1.25rem;max-width:960px;margin:2rem auto 0}
+        .acad-price-main{background:#0d1b26;color:#fff;border-radius:16px;padding:1.75rem}
+        .acad-price-main .v{font-size:2.8rem;font-weight:800;letter-spacing:-.02em;color:var(--primary);line-height:1}
+        .acad-price-main .r{color:#9fb0bb;font-size:.9rem;margin:.35rem 0 1rem}
+        .acad-price-main ul{margin:0;padding-left:1.2rem;color:#dfe7ec}
+        .acad-price-main li{margin-bottom:.35rem}
+        .acad-price-side{border:1px solid var(--border);border-radius:16px;padding:1.75rem;background:var(--background)}
+        .acad-price-side .v{font-size:1.8rem;font-weight:800;color:var(--text-primary)}
+        .acad-price-side .r{color:var(--text-secondary);font-size:.9rem;margin-bottom:.75rem}
+        .acad-price-side h4{margin:1.25rem 0 .25rem;font-size:1.05rem;color:var(--text-primary)}
+        .acad-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:960px;margin:2rem auto 0}
+        .acad-timeline div{border-top:4px solid var(--primary);padding-top:.75rem}
+        .acad-timeline b{display:block;color:var(--text-primary);margin-bottom:.25rem}
+        .acad-timeline span{font-size:.92rem;color:var(--text-secondary)}
+        .acad-faq{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:960px;margin:2rem auto 0}
+        .acad-faq div{background:var(--background-page);border-radius:12px;padding:1.1rem 1.25rem}
+        .acad-faq h3{font-size:1.02rem;margin:0 0 .35rem;color:var(--text-primary)}
+        .acad-faq p{margin:0;font-size:.95rem;color:var(--text-secondary)}
+        .acad-note{font-size:.85rem;color:var(--text-secondary);max-width:960px;margin:1.25rem auto 0}
+        @media (max-width:820px){.acad-pricing,.acad-faq{grid-template-columns:1fr}.acad-timeline{grid-template-columns:1fr 1fr}.acad-table td:first-child{width:38%}}
+        @media (max-width:520px){.acad-timeline{grid-template-columns:1fr}.acad-table th:nth-child(3),.acad-table td:nth-child(3){display:none}}
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo">
+                    <img src="images/logo-light.png" alt="EZ Personal" class="header-logo-img">
+                </div>
+                <div class="header-cta-group">
+                    <a href="academias.pdf" class="btn btn-secondary btn-header">Proposta em PDF</a>
+                    <a href="https://calendar.app.google/osmCq5QBz235JYwW9" class="btn btn-primary btn-header">Agendar 15 minutos</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <div class="acad-kicker">EZ Academia · para donos e gestores</div>
+                    <h1 class="hero-title">Quem sumiu da sua academia este mês?</h1>
+                    <p class="hero-description">
+                        O EZ Personal leva o treino ao aluno pelo WhatsApp, registra cada treino feito e mostra ao gestor quem está parando de aparecer — <strong>antes de virar cancelamento</strong>.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="https://calendar.app.google/osmCq5QBz235JYwW9" class="btn btn-primary btn-large">Agendar 15 minutos</a>
+                        <a href="#piloto" class="btn btn-secondary btn-large">Ver o piloto sem custo</a>
+                    </div>
+                    <p class="hero-notice">Piloto de 30 dias sem custo · personalização para a academia por R$ 1.000, uma vez</p>
+                </div>
+                <div class="hero-image">
+                    <img src="images/05-acompanhamento.png" alt="Painel de acompanhamento mostrando quais alunos treinaram e quais sumiram" class="hero-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">A academia descobre o cancelamento depois que ele aconteceu</h2>
+            <p class="section-lead">
+                A catraca sabe quem entrou. Ninguém sabe quem <em>deixou de entrar</em> — e o aluno que faltou duas semanas raramente volta sozinho.<br>
+                <strong>Quando o nome aparece na lista de cancelamento, a decisão já foi tomada em casa, semanas antes.</strong>
+            </p>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">🚪</div>
+                    <h3>A catraca só conta entradas</h3>
+                    <p>Frequência é um relatório do mês passado. Retenção precisa de um nome na terça-feira, enquanto ainda dá para ligar.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">👻</div>
+                    <h3>O aluno some em silêncio</h3>
+                    <p>Ele não avisa que vai parar. Some da sala, depois da lista, depois do boleto — nessa ordem, e ninguém falou com ele.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📋</div>
+                    <h3>Cada professor, uma planilha</h3>
+                    <p>O treino está no caderno de um, no app de outro, no print de um terceiro. O gestor não enxerga a base inteira.</p>
+                </div>
+            </div>
+            <div class="acad-quote">Retenção não é um relatório no fim do mês. É saber, na terça-feira, quem não treinou na semana passada — e ter alguém com o nome dele na mão.</div>
+        </div>
+    </section>
+
+    <!-- Como funciona -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <h2 class="section-title">O treino vai até o aluno, e cada treino feito vira um sinal</h2>
+            <p class="section-lead">
+                Nada para o aluno instalar. O professor usa o painel; o aluno usa o WhatsApp que já tem.<br>
+                <strong>O gestor enxerga a academia inteira.</strong>
+            </p>
+            <div class="steps-list">
+                <div class="step-item">
+                    <div class="step-badge platform">No painel</div>
+                    <div class="step-content">
+                        <h3>1. O professor monta o treino</h3>
+                        <p>Com o catálogo de mais de 1.700 exercícios, cada um com vídeo em versão masculina e feminina, descrição "o que é / como fazer" e grupos musculares. Ou parte dos treinos-padrão da casa.</p>
+                    </div>
+                    <div class="step-image">
+                        <img src="images/03-criacao-treino.png" alt="Editor de treino com exercícios da biblioteca" class="step-mockup">
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-badge whatsapp">Pelo WhatsApp</div>
+                    <div class="step-content">
+                        <h3>2. O aluno recebe e confirma</h3>
+                        <p>A Izzy, assistente da academia no WhatsApp, entrega o treino do dia, tira dúvidas e registra quando o aluno começa e termina. Cada sessão confirmada é um dado que a catraca não tem.</p>
+                    </div>
+                    <div class="step-image">
+                        <img src="images/04-whatsapp-treino.png" alt="WhatsApp com o treino enviado ao aluno" class="step-mockup">
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-badge platform">No painel</div>
+                    <div class="step-content">
+                        <h3>3. O gestor vê quem está sumindo</h3>
+                        <p>Por professor e por aluno: quem treinou, quem parou e há quanto tempo. Lista de "sumidos" de 7, 14 e 30 dias, com o telefone ao lado do nome — para agir enquanto ainda dá tempo.</p>
+                    </div>
+                    <div class="step-image">
+                        <img src="images/05-acompanhamento.png" alt="Painel de acompanhamento com status de cada aluno" class="step-mockup">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vantagens -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">O que a academia ganha</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-check">✓</div>
+                    <h3>Retenção com nome e telefone</h3>
+                    <p>O alerta de "sumido" chega ao professor com quem ligar. A conversa acontece antes do cancelamento, não depois.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-check">✓</div>
+                    <h3>Sua marca, sua conversa</h3>
+                    <p>Nome, logo e cores da academia no bot e no painel. O aluno fala com a academia, num número de WhatsApp Business da própria academia.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-check">✓</div>
+                    <h3>Equipe inteira num painel</h3>
+                    <p>Cada professor com seus alunos; o gestor com todos. Aluno troca de professor sem perder o histórico.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-check">✓</div>
+                    <h3>Padrão de treino da casa</h3>
+                    <p>Programas prontos da academia — iniciante, emagrecimento, hipertrofia — carregados para todos usarem e adaptarem.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-check">✓</div>
+                    <h3>Avaliação e PAR-Q sem papel</h3>
+                    <p>O aluno manda a foto ou o PDF pelo WhatsApp; a Izzy lê bioimpedância e avaliação física e guarda no perfil dele.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-check">✓</div>
+                    <h3>Os dados são da academia</h3>
+                    <p>Exportação completa a qualquer momento, exclusão com registro (LGPD), dados sensíveis cifrados. O número de WhatsApp continua seu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ajustes para academias -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">O que muda quando o cliente é a academia</h2>
+            <p class="section-lead">
+                O EZ Personal nasceu para o personal trainer e seus alunos. Para uma academia, a unidade passa a ser a <strong>equipe</strong> — e é isso que a personalização entrega.
+            </p>
+            <table class="acad-table">
+                <tr><th>Ajuste</th><th>O que a academia recebe</th><th>Status</th></tr>
+                <tr><td>Marca da academia</td><td>Nome, logo e cores no bot do WhatsApp e no painel.</td><td><span class="acad-tag">na personalização</span></td></tr>
+                <tr><td>Número de WhatsApp da academia</td><td>A Izzy responde de um número da própria academia (WhatsApp Business oficial da Meta).</td><td><span class="acad-tag">na personalização</span></td></tr>
+                <tr><td>Equipe de professores</td><td>Painel por professor, visão do gestor sobre todos, troca de professor sem perder histórico.</td><td><span class="acad-tag">na personalização</span></td></tr>
+                <tr><td>Treinos-padrão e importação de alunos</td><td>Programas da casa carregados; alunos e professores importados de planilha ou do sistema atual.</td><td><span class="acad-tag">na personalização</span></td></tr>
+                <tr><td>Painel do gestor</td><td>Frequência por professor e por aluno, lista de sumidos (7/14/30 dias), quem nunca começou.</td><td><span class="acad-tag piloto">construído no piloto</span></td></tr>
+                <tr><td>Alerta de retenção</td><td>Aviso ao professor (e ao gestor) quando um aluno passa X dias sem treinar.</td><td><span class="acad-tag piloto">construído no piloto</span></td></tr>
+                <tr><td>Cobrança</td><td>Opcional: a academia mantém o financeiro atual ou usa o financeiro por professor.</td><td><span class="acad-tag">opcional</span></td></tr>
+            </table>
+            <p class="acad-note"><strong>Sem promessa vazia:</strong> o que está como "construído no piloto" ainda não existe na versão para personal trainer. É construído com a academia-piloto, do jeito que a equipe trabalha — é o que o piloto sem custo compra de vocês: retorno honesto.</p>
+        </div>
+    </section>
+
+    <!-- Piloto e investimento -->
+    <section id="piloto" class="how-it-works-section">
+        <div class="container">
+            <h2 class="section-title">Piloto sem custo. Personalização por R$ 1.000, uma única vez.</h2>
+            <p class="section-lead">A conta é simples: um aluno que fica dois meses a mais paga a personalização. <strong>A partir do terceiro, já se pagou.</strong></p>
+            <div class="acad-pricing">
+                <div class="acad-price-main">
+                    <div class="v">R$ 1.000</div>
+                    <div class="r">pagamento único · personalização para a academia · cobrado na adoção, depois do piloto</div>
+                    <ul>
+                        <li>Marca da academia no bot e no painel</li>
+                        <li>Número de WhatsApp Business da academia configurado</li>
+                        <li>Cadastro da equipe de professores e do gestor</li>
+                        <li>Importação da base de alunos (planilha ou sistema atual)</li>
+                        <li>Treinos-padrão da casa carregados no catálogo</li>
+                        <li>Treinamento da equipe (1 sessão, online ou presencial em SP)</li>
+                        <li>30 dias de acompanhamento direto com quem constrói o produto</li>
+                    </ul>
+                </div>
+                <div class="acad-price-side">
+                    <div class="v">R$ 0</div>
+                    <div class="r">piloto de 30 dias</div>
+                    <p>Uma turma — um ou dois professores e os alunos deles —, a marca da academia já aplicada e uma reunião semanal de 20 minutos para ajustar. Em troca: retorno honesto.</p>
+                    <h4>Mensalidade</h4>
+                    <p>Definida ao fim do piloto, por professor ativo, com preço de fundador travado até o fim de 2026 para quem entrar agora. A academia decide com os números do próprio piloto na mão.</p>
+                </div>
+            </div>
+            <div class="acad-timeline">
+                <div><b>Semana 1</b><span>Reunião de 15 min, marca e número de WhatsApp, cadastro da equipe, importação dos alunos.</span></div>
+                <div><b>Semana 2</b><span>Treinamento dos professores, treinos-padrão da casa, primeiros alunos recebendo treino.</span></div>
+                <div><b>Semanas 3–4</b><span>Turma inteira no ar; painel do gestor e alerta de sumidos ajustados com a equipe.</span></div>
+                <div><b>Dia 30</b><span>Números na mesa: quem treinou, quem sumiu, quem voltou. Decisão de seguir, e a mensalidade.</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perguntas -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Antes de decidir</h2>
+            <div class="acad-faq">
+                <div><h3>O aluno precisa instalar algo?</h3><p>Não. Tudo acontece no WhatsApp que ele já usa. Professor e gestor usam o painel no navegador.</p></div>
+                <div><h3>E quem já tem app de treino?</h3><p>Importamos treinos de outras plataformas (PDF e export) para não recomeçar do zero. A diferença não está no treino: está em saber quem fez.</p></div>
+                <div><h3>Os dados dos alunos são de quem?</h3><p>Da academia. Exportação completa a qualquer momento, exclusão com registro (LGPD), dados sensíveis cifrados.</p></div>
+                <div><h3>E se não funcionar?</h3><p>O piloto não custa nada e termina com números. Se a retenção não mudar, vocês ficam com o diagnóstico da base — e nós, com o aprendizado.</p></div>
+                <div><h3>Quantos professores cabem?</h3><p>Não há limite técnico. Para o piloto, um ou dois, para o ajuste ser rápido; a expansão para a equipe toda é a personalização.</p></div>
+                <div><h3>O WhatsApp da academia fica "preso"?</h3><p>Não. O número é da academia na plataforma oficial da Meta; se um dia sair, o número continua seu.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="signup-section">
+        <div class="container">
+            <div class="signup-wrapper">
+                <div class="signup-wrapper-cta">
+                    <div class="b2b-badge">Academias de São Paulo · setembro e outubro de 2026</div>
+                    <h2 class="signup-title">Próximo passo: 15 minutos, no seu horário</h2>
+                    <p class="signup-description">Eu mostro o painel com dados reais e a gente vê se faz sentido para a sua academia. Se preferir ler antes, a proposta de 5 páginas está aqui.</p>
+                    <div class="hero-cta-group">
+                        <a href="https://calendar.app.google/osmCq5QBz235JYwW9" class="btn btn-primary btn-large">Escolher um horário</a>
+                        <a href="academias.pdf" class="btn btn-secondary btn-large">Baixar a proposta (PDF)</a>
+                    </div>
+                    <div class="signup-benefits">
+                        <div class="signup-benefit"><span class="signup-benefit-icon">🏷️</span><span><strong>Sua marca</strong>, nossa tecnologia</span></div>
+                        <div class="signup-benefit"><span class="signup-benefit-icon">📊</span><span><strong>Gestão centralizada</strong> de todos os professores</span></div>
+                        <div class="signup-benefit"><span class="signup-benefit-icon">🤝</span><span><strong>Piloto sem custo</strong>, com retorno honesto</span></div>
+                    </div>
+                </div>
+                <div class="signup-form-wrapper">
+                    <h3 class="signup-form-title">Prefere que a gente te chame?</h3>
+                    <p class="signup-form-description">Deixe seus dados e o Flávio entra em contato em até um dia útil.</p>
+                    <form id="b2bForm" class="signup-form">
+                        <div class="form-group"><input type="text" id="b2bName" class="form-input" placeholder="Seu nome" required maxlength="120"></div>
+                        <div class="form-group"><input type="text" id="b2bGymName" class="form-input" placeholder="Nome da academia" required maxlength="160"></div>
+                        <div class="form-group"><input type="text" id="b2bContact" class="form-input" placeholder="E-mail ou WhatsApp" required maxlength="160"></div>
+                        <div class="form-group"><textarea id="b2bMessage" class="form-input" rows="3" placeholder="Quantos professores e alunos? (opcional)" maxlength="1000"></textarea></div>
+                        <button type="submit" class="btn btn-primary btn-block">Quero conhecer o piloto</button>
+                        <p class="form-notice">🔒 Seus dados só são usados para entrarmos em contato.</p>
+                        <div id="b2bFormMessage"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>EZ Academia</strong> é o EZ Personal para academias: treino pelo WhatsApp, retenção no painel.</p>
+            <p>© 2026 EZ Personal · Flávio Martino · flavio@ezpersonal.com.br · WhatsApp +55 11 97080-6161</p>
+            <p class="footer-links">
+                <a href="termos.html">Termo de Uso</a>
+                <span aria-hidden="true">·</span>
+                <a href="privacidade.html">Política de Privacidade</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://ezpersonal.com.br">EZ Personal para personal trainers</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var API_BASE = 'https://app.ezpersonal.com.br/api';
+            var form = document.getElementById('b2bForm');
+            var messageBox = document.getElementById('b2bFormMessage');
+            var submitBtn = form.querySelector('button[type="submit"]');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                messageBox.innerHTML = '';
+                submitBtn.disabled = true;
+                var originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Enviando…';
+                var msg = document.getElementById('b2bMessage').value.trim();
+                var payload = {
+                    name: document.getElementById('b2bName').value.trim(),
+                    gym_name: document.getElementById('b2bGymName').value.trim(),
+                    contact: document.getElementById('b2bContact').value.trim(),
+                    // de onde veio o lead: a página de academias, não a home do personal
+                    message: '[ezacademia] ' + (msg || 'sem mensagem'),
+                };
+                fetch(API_BASE + '/b2b-leads', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                })
+                    .then(function (res) {
+                        if (!res.ok) return res.json().then(function (body) { throw new Error(body.message || 'Erro ao enviar.'); });
+                        return res.json();
+                    })
+                    .then(function () {
+                        form.reset();
+                        messageBox.innerHTML = '<p class="form-message form-message-success">✅ Recebemos seus dados! O Flávio entra em contato em até um dia útil.</p>';
+                    })
+                    .catch(function (err) {
+                        messageBox.innerHTML = '<p class="form-message form-message-error">' + (err.message || 'Não deu para enviar agora. Tente de novo em instantes.') + '</p>';
+                    })
+                    .finally(function () {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    });
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -19,5 +19,24 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "(www\\.)?ezacademia\\.com\\.br"
+        }
+      ],
+      "destination": "/academias.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/academias",
+      "destination": "/academias.html",
+      "permanent": false
+    }
   ]
 }
