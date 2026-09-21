@@ -20,7 +20,7 @@
       ]
     }
   ],
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
       "has": [
@@ -29,14 +29,9 @@
           "value": "(www\\.)?ez-?academia\\.com\\.br"
         }
       ],
-      "destination": "/academias.html"
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/academias",
-      "destination": "/academias.html",
+      "destination": "/academias",
       "permanent": false
     }
-  ]
+  ],
+  "cleanUrls": true
 }
