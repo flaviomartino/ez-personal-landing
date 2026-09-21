@@ -24,10 +24,28 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     --gradient-primary: linear-gradient(135deg, #73d537, #024d3a);
+    /* O cabeçalho é fixo, então o body precisa reservar exatamente a altura dele. Os breakpoints
+       redefinem as duas coisas juntas — ver o card 11 no rodapé deste arquivo. */
+    --altura-header: 70px;
 }
 
 html {
     scroll-behavior: smooth;
+    /* Sem isto, clicar num link de âncora rola o alvo para DEBAIXO do cabeçalho fixo. */
+    scroll-padding-top: var(--altura-header);
+}
+
+/* Rede de segurança: qualquer mídia nova respeita a largura da tela mesmo sem classe própria,
+   e palavra comprida (URL, e-mail) quebra em vez de empurrar a página para o lado. */
+img,
+svg,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    overflow-wrap: break-word;
 }
 
 body {
@@ -35,7 +53,7 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     background: var(--background);
-    padding-top: 70px;
+    padding-top: var(--altura-header);
 }
 
 /* Header */
@@ -895,6 +913,161 @@ footer p {
 
     .btn-large {
         width: 100%;
+    }
+
+    /* O cabeçalho não pode crescer: a altura dele está reservada no padding-top do body, e se os
+       rótulos dos botões quebrarem em duas linhas ele passa dos 70px e engole o topo do hero —
+       era isto que fazia a landing "vir incompleta" no celular. */
+    .header-cta-group .btn {
+        white-space: nowrap;
+    }
+
+    .header-logo-img {
+        height: 28px;
+    }
+
+    /* 5rem acima e abaixo de nove seções somam mais de 700px de espaço vazio no celular. */
+    section {
+        padding: 3.5rem 0;
+    }
+
+    .problem-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .central-idea {
+        padding: 1.5rem;
+        margin: 1.5rem auto 2.5rem;
+    }
+
+    .step-item {
+        margin-bottom: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+}
+
+/* Celular de verdade. Até aqui o arquivo tinha um único breakpoint, em 768px: um iPhone SE de
+   320px recebia o mesmo espaçamento e a mesma escala de tipos de um tablet, e o conteúdo ficava
+   espremido numa coluna estreita com 2rem de padding de cada lado. */
+@media (max-width: 480px) {
+    :root {
+        --altura-header: 60px;
+    }
+
+    .site-header {
+        padding: 0.75rem 0;
+    }
+
+    /* Num iPhone SE sobram 288px entre as bordas do container. O logo tem proporção 5,27:1, então
+       a 26px de altura ele sozinho come 137px, e com os dois botões inteiros a conta dava 323px:
+       o flex espremia o logo e estourava os rótulos. Aqui o logo encolhe e "Fazer login" perde a
+       moldura de botão — vira link, que é o peso certo para ele numa landing de captação. */
+    .header-logo-img {
+        height: 22px;
+    }
+
+    .header-cta-group {
+        gap: 0.5rem;
+    }
+
+    .header-cta-group .btn {
+        flex-shrink: 0;
+        padding: 0.4375rem 0.6875rem;
+        font-size: 0.75rem;
+        border-radius: 9px;
+    }
+
+    .header-cta-group .btn-secondary {
+        background: none;
+        border: none;
+        padding: 0.25rem 0;
+        color: var(--text-secondary);
+        text-decoration: underline;
+        box-shadow: none;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    .hero-section {
+        padding: 2rem 0;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+        letter-spacing: -0.75px;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        letter-spacing: -0.5px;
+    }
+
+    .section-lead {
+        font-size: 0.9375rem;
+        margin-bottom: 2rem;
+    }
+
+    .problem-card {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .problem-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .benefit-card {
+        padding: 1.5rem 1.25rem;
+        grid-template-columns: 2rem 1fr;
+        gap: 0.25rem 0.75rem;
+    }
+
+    .izzy-wrapper,
+    .signup-wrapper {
+        padding: 1.75rem 1.25rem;
+        border-radius: 18px;
+    }
+
+    .izzy-title,
+    .signup-title {
+        font-size: 1.5rem;
+    }
+
+    .step-item {
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .step-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .pricing-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    /* A tarja é girada e fica por cima dos planos: se não encolher junto, escapa pelas laterais. */
+    .pricing-overlay p {
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+        margin: 0 0.75rem;
+        border-radius: 12px;
+    }
+
+    .btn-large {
+        padding: 0.875rem 1.25rem;
+        font-size: 1rem;
     }
 }
 
