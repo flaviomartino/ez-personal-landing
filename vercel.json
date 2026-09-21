@@ -26,7 +26,7 @@
       "has": [
         {
           "type": "host",
-          "value": "(www\\.)?ezacademia\\.com\\.br"
+          "value": "(www\\.)?ez-?academia\\.com\\.br"
         }
       ],
       "destination": "/academias.html"
