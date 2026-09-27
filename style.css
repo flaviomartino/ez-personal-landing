@@ -1108,3 +1108,10 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+
+/* Contador de exercícios ao vivo (26/09/2026): o número se destaca quando vem do servidor. */
+.contador-vivo {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}

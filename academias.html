@@ -130,7 +130,7 @@
                     <div class="step-badge platform">No painel</div>
                     <div class="step-content">
                         <h3>1. O professor monta o treino</h3>
-                        <p>Com o catálogo de mais de 1.000 exercícios completos, cada um com GIF, descrição "o que é / como fazer", equipamento e grupos musculares. Ou parte dos treinos-padrão da casa.</p>
+                        <p>Com o catálogo de <span data-contador-exercicios>mais de 1.000</span> exercícios completos, cada um com GIF, descrição "o que é / como fazer", equipamento e grupos musculares. Ou parte dos treinos-padrão da casa.</p>
                     </div>
                     <div class="step-image">
                         <img src="images/03-criacao-treino.png" alt="Editor de treino com exercícios da biblioteca" class="step-mockup">
@@ -361,6 +361,22 @@
                         submitBtn.textContent = originalText;
                     });
             });
+        })();
+    </script>
+    <script>
+        // Contador de exercícios (26/09/2026): o número vem ao vivo de /api/exercicios/contagem e sobe a
+        // cada liberação do Victor (cache de 1 min). Sem resposta, fica o texto "mais de 1.000" do HTML.
+        (function () {
+            var alvos = document.querySelectorAll('[data-contador-exercicios]');
+            if (!alvos.length || !window.fetch) return;
+            fetch('https://app.ezpersonal.com.br/api/exercicios/contagem')
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (d) {
+                    if (!d || typeof d.liberados !== 'number' || d.liberados < 1) return;
+                    var n = d.liberados.toLocaleString('pt-BR');
+                    alvos.forEach(function (el) { el.textContent = n; el.classList.add('contador-vivo'); });
+                })
+                .catch(function () {});
         })();
     </script>
 </body>

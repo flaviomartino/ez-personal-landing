@@ -119,7 +119,7 @@
                     <div class="step-badge platform">Na plataforma</div>
                     <div class="step-content">
                         <h3>2. Crie o treino</h3>
-                        <p>Monte o treino do jeito que você já faz — com a sua expertise, não a de um template. Escolha entre mais de 1.000 exercícios completos da nossa biblioteca, cada um com GIF, descrição de execução, equipamento e grupos musculares.</p>
+                        <p>Monte o treino do jeito que você já faz — com a sua expertise, não a de um template. Escolha entre <span data-contador-exercicios>mais de 1.000</span> exercícios completos da nossa biblioteca, cada um com GIF, descrição de execução, equipamento e grupos musculares.</p>
                     </div>
                     <div class="step-image">
                         <img src="images/03-criacao-treino.png" alt="Editor de treino com exercícios e métodos" class="step-mockup">
@@ -444,6 +444,22 @@
                         submitBtn.textContent = originalText;
                     });
             });
+        })();
+    </script>
+    <script>
+        // Contador de exercícios (26/09/2026): o número vem ao vivo de /api/exercicios/contagem e sobe a
+        // cada liberação do Victor (cache de 1 min). Sem resposta, fica o texto "mais de 1.000" do HTML.
+        (function () {
+            var alvos = document.querySelectorAll('[data-contador-exercicios]');
+            if (!alvos.length || !window.fetch) return;
+            fetch('https://app.ezpersonal.com.br/api/exercicios/contagem')
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (d) {
+                    if (!d || typeof d.liberados !== 'number' || d.liberados < 1) return;
+                    var n = d.liberados.toLocaleString('pt-BR');
+                    alvos.forEach(function (el) { el.textContent = n; el.classList.add('contador-vivo'); });
+                })
+                .catch(function () {});
         })();
     </script>
 </body>
