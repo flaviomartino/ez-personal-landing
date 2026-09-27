@@ -1087,3 +1087,24 @@ footer p {
 .signup-wrapper {
     animation: fadeInUp 0.6s ease-out;
 }
+
+/* Planos com dois cartões (26/09/2026): Regular e Premium, sem o Freemium. */
+.pricing-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.pricing-extra {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-hairline);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .pricing-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
