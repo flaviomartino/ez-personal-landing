@@ -1115,3 +1115,20 @@ footer p {
     color: var(--text-primary);
     font-variant-numeric: tabular-nums;
 }
+
+/* Título da abertura em duas frases (27/09/2026): cada frase na sua linha. O tamanho acompanha a largura da coluna (a frase maior ocupa ~12 vezes o tamanho da
+   letra), com teto nos 3rem de antes: 43px no computador, 26px num celular de 360px. */
+.hero-content {
+    container-type: inline-size;
+}
+
+.hero-title-2l {
+    font-size: min(3rem, 7vw);
+    font-size: min(3rem, calc(100cqi / 12.6));
+    letter-spacing: -0.03em;
+}
+
+.hero-title-2l span {
+    display: block;
+    white-space: nowrap;
+}
