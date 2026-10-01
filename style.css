@@ -1218,14 +1218,16 @@ footer p {
 
 .izzy-arch img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
     display: block;
 }
 
 .izzy-caption {
     position: absolute;
     left: -1.5rem;
-    bottom: 2rem;
+    top: 58%;
     background: white;
     border-radius: 12px;
     box-shadow: var(--shadow-lg);
@@ -1259,7 +1261,7 @@ footer p {
 
     .izzy-caption {
         left: 0.5rem;
-        bottom: 1rem;
+        top: 55%;
     }
 }
 
