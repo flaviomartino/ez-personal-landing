@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560" role="img" aria-label="Izzy, a estagiária de educação física do EZ Personal">
+  <defs>
+    <linearGradient id="iz-polo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8be04a"/><stop offset="1" stop-color="#4fb01f"/>
+    </linearGradient>
+    <linearGradient id="iz-hair" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6b3f27"/><stop offset="1" stop-color="#3a2015"/>
+    </linearGradient>
+    <radialGradient id="iz-skin" cx="0.45" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#f3c7a4"/><stop offset="1" stop-color="#dfa07a"/>
+    </radialGradient>
+  </defs>
+
+  <!-- rabo de cavalo (atrás) -->
+  <path d="M318 150 C410 150 452 262 418 356 C406 388 372 384 376 352 C390 292 362 232 316 214 Z" fill="url(#iz-hair)"/>
+  <path d="M346 196 C392 226 408 290 390 338" fill="none" stroke="#8a5a3b" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+  <!-- cabelo atrás da cabeça -->
+  <ellipse cx="240" cy="205" rx="112" ry="118" fill="url(#iz-hair)"/>
+
+  <!-- tronco -->
+  <path d="M84 560 C90 452 146 398 214 376 L266 376 C334 398 390 452 396 560 Z" fill="url(#iz-polo)"/>
+  <path d="M84 560 C88 500 104 460 130 430 C120 480 122 520 128 560 Z" fill="#4fb01f" opacity=".5"/>
+  <!-- pescoço -->
+  <path d="M212 296 L268 296 L272 376 C262 398 218 398 208 376 Z" fill="#dfa07a"/>
+  <path d="M212 330 C232 350 252 350 270 330 L270 352 C250 372 230 372 212 352 Z" fill="#c98a65" opacity=".55"/>
+  <!-- gola -->
+  <path d="M206 372 L240 428 L208 404 Z" fill="#024d3a"/>
+  <path d="M274 372 L240 428 L272 404 Z" fill="#024d3a"/>
+  <path d="M214 378 L240 424 L266 378 C256 396 224 396 214 378 Z" fill="#dfa07a"/>
+  <!-- cordão e crachá -->
+  <path d="M200 380 L240 486 L280 380" fill="none" stroke="#024d3a" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <g transform="translate(214 478)">
+    <rect width="52" height="70" rx="7" fill="#fff" stroke="#024d3a" stroke-width="3"/>
+    <rect width="52" height="18" rx="7" fill="#024d3a"/>
+    <rect y="11" width="52" height="7" fill="#024d3a"/>
+    <text x="26" y="13" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">EZ</text>
+    <text x="26" y="40" font-family="Arial, sans-serif" font-size="12" font-weight="800" fill="#024d3a" text-anchor="middle">IZZY</text>
+    <text x="26" y="54" font-family="Arial, sans-serif" font-size="6.5" font-weight="700" fill="#4fb01f" text-anchor="middle">ESTAGIÁRIA</text>
+  </g>
+
+  <!-- prancheta -->
+  <g transform="rotate(-9 330 520)">
+    <rect x="286" y="452" width="96" height="120" rx="10" fill="#fff" stroke="#024d3a" stroke-width="4"/>
+    <rect x="320" y="444" width="28" height="16" rx="5" fill="#024d3a"/>
+    <g stroke="#9ca3af" stroke-width="3" stroke-linecap="round">
+      <line x1="314" y1="486" x2="366" y2="486"/><line x1="314" y1="506" x2="358" y2="506"/><line x1="314" y1="526" x2="364" y2="526"/>
+    </g>
+    <g fill="none" stroke="#4fb01f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M298 486 l4 4 l8 -9"/><path d="M298 506 l4 4 l8 -9"/>
+    </g>
+    <circle cx="303" cy="526" r="5" fill="none" stroke="#9ca3af" stroke-width="3"/>
+  </g>
+  <!-- mão segurando -->
+  <ellipse cx="292" cy="522" rx="17" ry="22" fill="url(#iz-skin)" transform="rotate(-9 292 522)"/>
+  <path d="M276 508 C270 496 284 490 290 500" fill="none" stroke="#c98a65" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- orelhas -->
+  <ellipse cx="152" cy="236" rx="13" ry="20" fill="#dfa07a"/>
+  <ellipse cx="328" cy="236" rx="13" ry="20" fill="#dfa07a"/>
+  <!-- rosto -->
+  <ellipse cx="240" cy="226" rx="88" ry="102" fill="url(#iz-skin)"/>
+  <!-- bochechas -->
+  <ellipse cx="186" cy="268" rx="20" ry="12" fill="#f08a7a" opacity=".35"/>
+  <ellipse cx="294" cy="268" rx="20" ry="12" fill="#f08a7a" opacity=".35"/>
+
+  <!-- olhos -->
+  <g>
+    <ellipse cx="204" cy="230" rx="22" ry="25" fill="#fff"/>
+    <ellipse cx="276" cy="230" rx="22" ry="25" fill="#fff"/>
+    <circle cx="207" cy="233" r="16" fill="#5a3419"/>
+    <circle cx="273" cy="233" r="16" fill="#5a3419"/>
+    <circle cx="207" cy="233" r="8" fill="#1a0f0a"/>
+    <circle cx="273" cy="233" r="8" fill="#1a0f0a"/>
+    <circle cx="213" cy="226" r="4.5" fill="#fff"/>
+    <circle cx="279" cy="226" r="4.5" fill="#fff"/>
+    <circle cx="201" cy="240" r="2" fill="#fff" opacity=".8"/>
+    <circle cx="267" cy="240" r="2" fill="#fff" opacity=".8"/>
+    <path d="M181 226 C188 204 222 200 228 220" fill="none" stroke="#2a1810" stroke-width="5" stroke-linecap="round"/>
+    <path d="M252 220 C258 200 292 204 299 226" fill="none" stroke="#2a1810" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <!-- sobrancelhas: uma levemente erguida (curiosa) -->
+  <path d="M178 196 C190 180 216 178 230 190" fill="none" stroke="#3a2015" stroke-width="7" stroke-linecap="round"/>
+  <path d="M252 184 C268 172 294 176 304 192" fill="none" stroke="#3a2015" stroke-width="7" stroke-linecap="round"/>
+  <!-- nariz -->
+  <path d="M236 250 C232 266 230 272 240 274 C250 272 248 266 244 250" fill="none" stroke="#c98a65" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- sorriso -->
+  <path d="M206 290 C222 322 258 322 274 290 C256 300 224 300 206 290 Z" fill="#fff" stroke="#b5483f" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M206 290 C222 298 258 298 274 290" fill="none" stroke="#b5483f" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- franja -->
+  <path d="M148 226 C136 118 232 76 304 112 C344 134 342 190 332 226 C316 176 276 152 220 160 C182 166 156 192 148 226 Z" fill="url(#iz-hair)"/>
+  <path d="M176 142 C210 112 262 108 300 128" fill="none" stroke="#9a6a48" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+  <!-- xuxinha -->
+  <ellipse cx="322" cy="162" rx="15" ry="22" fill="#73d537" transform="rotate(28 322 162)"/>
+  <ellipse cx="322" cy="162" rx="7" ry="13" fill="#4fb01f" transform="rotate(28 322 162)"/>
+  <!-- lápis atrás da orelha -->
+  <g transform="rotate(-24 146 212)">
+    <rect x="140" y="178" width="10" height="56" rx="2" fill="#f5c542"/>
+    <polygon points="140,234 150,234 145,246" fill="#e9c9a5"/>
+    <polygon points="143,241 147,241 145,246" fill="#2a1810"/>
+    <rect x="140" y="178" width="10" height="9" rx="2" fill="#f08a7a"/>
+  </g>
+</svg>
