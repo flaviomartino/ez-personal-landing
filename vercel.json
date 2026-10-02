@@ -52,7 +52,7 @@
   "rewrites": [
     {
       "source": "/t/:id",
-      "destination": "https://staging.ezpersonal.com.br/t/:id"
+      "destination": "https://app.ezpersonal.com.br/t/:id"
     }
   ]
 }
