@@ -802,6 +802,22 @@ footer p {
     margin-top: 0.75rem !important;
 }
 
+.footer-contato a {
+    color: white;
+    font-weight: 600;
+}
+
+.pricing-contato {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--text-secondary);
+}
+
+.pricing-contato a {
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
 .footer-links a {
     color: rgba(255, 255, 255, 0.75);
     text-decoration: none;

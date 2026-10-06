@@ -37,46 +37,87 @@
     <div class="container">
         <div class="legal-content">
             <h1>Política de Privacidade</h1>
-            <p class="legal-updated">Última atualização: agosto de 2026</p>
+            <p class="legal-updated">Última atualização: 6 de outubro de 2026</p>
 
-            <p class="legal-notice">
-                ⚠️ Este é um documento genérico de pré-lançamento, em revisão jurídica conforme a LGPD. A versão final e definitiva será publicada antes do início de qualquer cobrança gratuito.
-            </p>
+            <p>Esta política explica como a plataforma EZ Personal trata dados pessoais, conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018, "LGPD"). A plataforma é operada pela <strong>CARGO CERTO</strong>, CNPJ nº <strong>47.595.622/0001-73</strong> ("Cargo Certo", "nós").</p>
 
-            <h2>1. Quais dados coletamos</h2>
+            <h2>1. Quem decide sobre cada dado</h2>
             <ul>
-                <li><strong>Do personal trainer:</strong> nome, e-mail, WhatsApp, gênero (opcional), registro profissional (CREF).</li>
-                <li><strong>Dos alunos (cadastrados pelo personal):</strong> nome, WhatsApp, e-mail (opcional), respostas do questionário PAR-Q, dados de treino e evolução física.</li>
-                <li><strong>De uso da plataforma:</strong> logs técnicos de acesso e ações, para segurança e suporte.</li>
+                <li><strong>Dados da conta do personal trainer:</strong> a Cargo Certo é a controladora.</li>
+                <li><strong>Dados dos alunos:</strong> o personal trainer que cadastra o aluno é o controlador. A Cargo Certo é operadora: trata esses dados em nome do personal, só para prestar o serviço, e não os usa para outra finalidade.</li>
             </ul>
 
-            <h2>2. Para que usamos esses dados</h2>
+            <h2>2. Quais dados tratamos</h2>
             <ul>
-                <li>Operar as funcionalidades da plataforma (treinos, cobrança, acompanhamento).</li>
-                <li>Enviar mensagens via WhatsApp relacionadas ao treino e à consultoria.</li>
-                <li>Melhorar o produto e dar suporte a personal trainers e alunos.</li>
+                <li><strong>Do personal trainer:</strong> nome, e-mail, WhatsApp, gênero (opcional), registro no CREF, CPF ou CNPJ (para a nota fiscal) e dados de pagamento da assinatura (data e valor do Pix e comprovante).</li>
+                <li><strong>Dos alunos, cadastrados pelo personal:</strong> nome, WhatsApp, e-mail (opcional), dados de treino (treinos recebidos, séries, cargas e sessões feitas) e dados de cobrança combinados com o personal.</li>
+                <li><strong>Dados de saúde dos alunos (dados sensíveis):</strong> respostas do questionário PAR-Q, esforço percebido (PSE), registro de dor, comentários sobre o treino e arquivos que o aluno envie ao personal pelo WhatsApp (como bioimpedância e exames), com o que for lido deles.</li>
+                <li><strong>De uso:</strong> registros técnicos de acesso e de ações, para segurança, auditoria e suporte.</li>
             </ul>
 
-            <h2>3. Com quem compartilhamos</h2>
-            <p>Dados podem ser processados por fornecedores que operam a infraestrutura da plataforma (hospedagem, banco de dados, envio de WhatsApp e e-mail), sempre sob obrigação contratual de confidencialidade. Não vendemos dados pessoais a terceiros.</p>
+            <h2>3. Para que usamos e com que base legal</h2>
+            <ul>
+                <li><strong>Prestar o serviço contratado</strong> (treinos, mensagens, acompanhamento, cobrança dos alunos): execução de contrato (LGPD, art. 7º, V).</li>
+                <li><strong>Emitir nota fiscal e cumprir obrigações fiscais:</strong> cumprimento de obrigação legal (art. 7º, II).</li>
+                <li><strong>Segurança, prevenção a fraude e melhoria da plataforma:</strong> legítimo interesse (art. 7º, IX), sempre com o mínimo de dados.</li>
+                <li><strong>Dados de saúde dos alunos:</strong> tratados para que o personal acompanhe o treino com segurança, com base na tutela da saúde por profissional da área e no consentimento do aluno, que o personal coleta (art. 11, II, "f", e art. 11, I).</li>
+            </ul>
+            <p>Não vendemos dados pessoais e não usamos dados de alunos para publicidade.</p>
 
-            <h2>4. Segurança e criptografia</h2>
-            <p>Dados sensíveis (como nome, contato e informações de saúde declaradas no PAR-Q) são armazenados com criptografia. O acesso é restrito por controle de permissões — cada personal só acessa os dados dos seus próprios alunos.</p>
+            <h2>4. Com quem compartilhamos</h2>
+            <p>Usamos fornecedores que operam a infraestrutura, sob contrato e só para prestar o serviço:</p>
+            <ul>
+                <li><strong>Supabase</strong> — banco de dados e autenticação.</li>
+                <li><strong>Vercel</strong> — hospedagem da plataforma e do site.</li>
+                <li><strong>Meta (WhatsApp Business Platform)</strong> — envio e recebimento das mensagens no WhatsApp.</li>
+                <li><strong>Amazon Web Services (Amazon Bedrock)</strong> — inteligência artificial da Izzy. O modelo principal (Mistral) roda na região de São Paulo. Algumas funções podem usar o modelo Claude, da Anthropic, na região da AWS nos Estados Unidos (us-east-1).</li>
+                <li><strong>Resend</strong> e <strong>Amazon Web Services (SES)</strong> — envio de e-mails, como avisos e o resumo semanal.</li>
+                <li><strong>Google</strong> — login com conta Google e, se o personal conectar, guarda dos arquivos dos alunos no Google Drive do próprio personal.</li>
+                <li><strong>Vimeo</strong> e <strong>Amazon CloudFront</strong> — vídeos e imagens dos exercícios.</li>
+                <li><strong>Motra</strong> e <strong>Strava</strong> — só se o aluno conectar a conta dele, para trazer atividades e medições.</li>
+            </ul>
+            <p>Também podemos compartilhar dados quando a lei ou uma ordem de autoridade exigir.</p>
 
-            <h2>5. Seus direitos (LGPD)</h2>
-            <p>Você pode solicitar a qualquer momento: acesso aos seus dados, correção, exportação (portabilidade) ou exclusão da sua conta e dos dados associados, pelo canal "Fale conosco" dentro da plataforma ou pelas Configurações da conta.</p>
+            <h2>5. Transferência internacional</h2>
+            <p>Alguns fornecedores processam dados fora do Brasil, como a AWS nos Estados Unidos (quando a Izzy usa o modelo Claude), a Vercel e serviços de e-mail. Essas transferências seguem o art. 33 da LGPD, com fornecedores que adotam cláusulas contratuais e medidas de segurança compatíveis com a lei brasileira.</p>
 
-            <h2>6. Retenção</h2>
-            <p>Mantemos os dados enquanto sua conta estiver ativa. Ao excluir a conta, os dados são removidos conforme os prazos técnicos e legais aplicáveis.</p>
+            <h2>6. Segurança</h2>
+            <ul>
+                <li>Nomes de alunos e de personal trainers, WhatsApp dos alunos, CPF ou CNPJ e dados de saúde (PAR-Q, PSE, dor e comentários) são gravados cifrados.</li>
+                <li>Cada personal só acessa os dados dos próprios alunos, por controle de permissão no banco de dados.</li>
+                <li>A conexão com a plataforma é sempre criptografada (HTTPS), e os vídeos são entregues por links assinados e temporários.</li>
+            </ul>
 
-            <h2>7. Dados de alunos menores de idade</h2>
-            <p>O cadastro de alunos menores de idade deve ser feito com autorização do responsável legal, que também deve concordar com o tratamento dos dados na plataforma.</p>
+            <h2>7. Por quanto tempo guardamos</h2>
+            <ul>
+                <li>Os dados ficam guardados enquanto a conta estiver ativa.</li>
+                <li>Quando o personal exclui um aluno, os dados dele saem da plataforma. Quando o personal exclui a conta, o cadastro e todos os alunos, treinos, sessões e dados de saúde vinculados são apagados na hora, e o personal recebe por e-mail uma cópia dos dados.</li>
+                <li>No "treino grátis" enviado por quem ainda não tem conta, o registro do aluno é apagado em 60 dias e o treino em 90 dias, se o personal não virar cliente.</li>
+                <li>Dados de pagamento e notas fiscais são guardados pelo prazo exigido pela legislação fiscal.</li>
+            </ul>
 
-            <h2>8. Alterações nesta política</h2>
-            <p>Este documento pode ser atualizado conforme a plataforma evolui. Alterações relevantes serão comunicadas aos usuários ativos.</p>
+            <h2>8. Seus direitos</h2>
+            <p>A LGPD (art. 18) garante: confirmação de que tratamos seus dados, acesso, correção, anonimização ou eliminação do que for desnecessário, portabilidade, informação sobre com quem compartilhamos, revogação do consentimento e eliminação dos dados tratados com base nele.</p>
+            <ul>
+                <li><strong>Personal trainer:</strong> corrija dados e exclua a conta em Configurações, ou escreva para <a href="mailto:flavio@ezpersonal.com.br">flavio@ezpersonal.com.br</a>.</li>
+                <li><strong>Aluno:</strong> fale primeiro com o seu personal, que é quem controla os seus dados na plataforma. Se preferir, escreva para <a href="mailto:flavio@ezpersonal.com.br">flavio@ezpersonal.com.br</a>; encaminhamos o pedido ao personal e ajudamos a atendê-lo.</li>
+            </ul>
+            <p>Respondemos em até 15 dias. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
 
-            <h2>9. Contato</h2>
-            <p>Dúvidas sobre privacidade e dados podem ser enviadas pelo canal "Fale conosco" dentro da plataforma.</p>
+            <h2>9. Encarregado de dados</h2>
+            <p>O canal do encarregado pelo tratamento de dados pessoais é o e-mail <a href="mailto:flavio@ezpersonal.com.br">flavio@ezpersonal.com.br</a>.</p>
+
+            <h2>10. Alunos menores de idade</h2>
+            <p>O cadastro de aluno menor de idade exige a autorização de um responsável legal, que o personal deve colher, inclusive para os dados de saúde.</p>
+
+            <h2>11. Cookies</h2>
+            <p>Este site não usa cookies de publicidade nem ferramentas de análise de navegação. As fontes do site vêm do Google Fonts, que recebe o endereço IP de quem visita. No painel, usamos apenas o armazenamento necessário para manter você conectado.</p>
+
+            <h2>12. Alterações nesta política</h2>
+            <p>Esta política pode mudar conforme a plataforma evolui. Mudanças relevantes são avisadas por e-mail ou no painel antes de valer. A data no topo mostra a última atualização.</p>
+
+            <h2>13. Contato</h2>
+            <p>Dúvidas sobre privacidade: <a href="mailto:flavio@ezpersonal.com.br">flavio@ezpersonal.com.br</a>.</p>
 
             <a href="index.html" class="legal-back">← Voltar para a página inicial</a>
         </div>
@@ -84,7 +125,8 @@
 
     <footer>
         <div class="container">
-            <p><strong>A ferramenta de gestão online que personal trainers brasileiros esperavam.</strong></p>
+            <p><strong>A plataforma de gestão online que personal trainers brasileiros esperavam.</strong></p>
+            <p class="footer-contato">Fale com a gente: <a href="mailto:flavio@ezpersonal.com.br">flavio@ezpersonal.com.br</a></p>
             <p>© 2026 EZ Personal · Lançado em 1º de setembro de 2026, Dia do Educador Físico.</p>
             <p class="footer-links">
                 <a href="termos.html">Termo de Uso</a>
