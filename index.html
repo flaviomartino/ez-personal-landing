@@ -6,6 +6,10 @@
     <meta name="description" content="EZ Personal - Seu aluno recebe o treino escrito no WhatsApp, até com sinal fraco. Você monta, acompanha e cobra num só lugar. 30 dias grátis, sem cartão de crédito.">
     <meta name="theme-color" content="#10B981">
     <title>EZ Personal - Gestão de Alunos e Treinos pelo WhatsApp</title>
+    <!-- Medição do Google Ads (medicao.js): preencher com os IDs da conta. Vazios = nada carrega. -->
+    <meta name="ez-ga4-id" content="">
+    <meta name="ez-ads-id" content="">
+    <meta name="ez-ads-rotulo-clique-cadastro" content="">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="style.css">
@@ -226,7 +230,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing-section">
+    <section class="pricing-section" id="planos">
         <div class="container">
             <h2 class="section-title">Planos</h2>
             <p class="section-lead">Aproveite os preços de lançamento! Comece com 30 dias grátis, sem cartão de crédito. O valor da sua assinatura fica travado por 12 meses.</p>
@@ -427,5 +431,6 @@
                 .catch(function () {});
         })();
     </script>
+    <script src="medicao.js" defer></script>
 </body>
 </html>
